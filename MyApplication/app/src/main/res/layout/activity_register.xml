@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="330dp"
+        android:layout_height="280dp"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.369">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="222dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="@string/create_account"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarRegister"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
+                    android:visibility="gone"
+                    tools:visibility="gone" />
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:hint="@string/username">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/username_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/username_right"
+                    android:drawableRight="@drawable/username_right"
+                    android:fontFamily="@font/poppinsmedium" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:hint="@string/e_mail">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/username_right"
+                    android:drawableRight="@drawable/username_right"
+                    android:fontFamily="@font/poppinsmedium" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:hint="@string/password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/password_right"
+                    android:drawableRight="@drawable/password_right"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:gravity="center_vertical" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.004"
+        app:srcCompat="@drawable/ic_login_back" />
+
+    <LinearLayout
+        android:id="@+id/button_resetPasswordLayout"
+        android:layout_width="411dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
+            android:minHeight="48dp"
+            android:text="@string/remember_me" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_back">
+
+            <TextView
+                android:id="@+id/button_user_register"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="center"
+
+                android:text="@string/signup"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.142" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_resetPasswordLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/rounded_rectangle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/social_signup"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/rounded_rectangle" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/illustration" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="209dp"
+        android:layout_height="41dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/in" />
+
+        <ImageView
+            android:id="@+id/button_googleRegister"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/g" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/fb" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/tw" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
