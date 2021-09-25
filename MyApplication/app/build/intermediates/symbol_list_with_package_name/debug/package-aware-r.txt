@@ -2186,10 +2186,12 @@ drawable flag_zimbabwe
 drawable g
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable ic_action_name
 drawable ic_backspace_black_24dp
 drawable ic_baseline_account_circle_24
 drawable ic_baseline_home_24
 drawable ic_baseline_login_24
+drawable ic_baseline_more_vert_24
 drawable ic_clear_black_24dp
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
@@ -2200,6 +2202,10 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_round_keyboard_arrow_down_24
+drawable ic_round_keyboard_arrow_up_24
+drawable ic_round_search_24
+drawable ic_search_black_24dp
 drawable illustration
 drawable in
 drawable material_cursor_drawable
@@ -2396,6 +2402,7 @@ id animateToStart
 id antiClockwise
 id anticipate
 id appBarLayout
+id app_bar_search
 id arc
 id asConfigured
 id async
@@ -2425,6 +2432,7 @@ id button_googleLogin
 id button_googleRegister
 id button_login
 id button_logout
+id button_play_movie
 id button_resetPassword
 id button_resetPasswordLayout
 id button_save_profile
@@ -2494,6 +2502,7 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
+id down_show
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -2624,6 +2633,7 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id media_actions
+id menu_sort
 id message
 id middle
 id mini
@@ -2634,6 +2644,12 @@ id month_navigation_next
 id month_navigation_previous
 id month_title
 id motion_base
+id movie_description
+id movie_description_complete
+id movie_genre
+id movie_poster
+id movie_rating
+id movie_title
 id mtrl_anchor_parent
 id mtrl_calendar_day_selector_frame
 id mtrl_calendar_days_of_week
@@ -2716,8 +2732,10 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recyclerView_topRatedMovies
+id recyclerView_upcomingMovies
 id recycler_countryDialog
-id recylerView_latestMovies
+id recylcerView_latestMovies
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2768,6 +2786,8 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id sort_by_genre
+id sort_by_rating
 id south
 id spacer
 id special_effects_controller_view_tag
@@ -2790,7 +2810,6 @@ id staticPostLayout
 id status_bar_latest_event_content
 id stop
 id stretch
-id string_text
 id submenuarrow
 id submit_area
 id supportScrollUp
@@ -2862,6 +2881,7 @@ id unchecked
 id uniform
 id unlabeled
 id up
+id up_hide
 id useLogo
 id username_register
 id verificationCode
@@ -3069,6 +3089,7 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu bottom_navigation_bar
+menu toolbar_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation my_nav

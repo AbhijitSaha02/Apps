@@ -23,10 +23,6 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
                 as NavHostFragment
         val navController : NavController = navHostFragment.navController
-//        val appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.loginFragment,
-//            R.id.profileFragment, R.id.extraFragment))
-
-        // setupActionBarWithNavController(navController, appBarConfiguration)
 
         if(currentUser != null) {
             bottomNavigationView.menu.findItem(R.id.profileFragment).isVisible = true

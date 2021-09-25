@@ -24,8 +24,8 @@
                 android:id="@+id/movie_poster"
                 android:layout_width="103dp"
                 android:layout_height="130dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,11 +37,13 @@
 
             <TextView
                 android:id="@+id/movie_title"
-                layout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
+                android:width="200dp"
+                android:maxLines="2"
+                android:minLines="1"
                 android:text="TextView"
                 android:textSize="21sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -53,14 +55,18 @@
 
             <TextView
                 android:id="@+id/movie_rating"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
                 android:text="TextView"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.102"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/movie_poster"
                 app:layout_constraintTop_toBottomOf="@+id/movie_title"
                 app:layout_constraintVertical_bias="0.0" />
@@ -69,9 +75,11 @@
                 android:id="@+id/movie_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
                 android:text="TextView"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -80,20 +88,6 @@
                 app:layout_constraintStart_toEndOf="@+id/movie_poster"
                 app:layout_constraintTop_toBottomOf="@+id/movie_rating"
                 app:layout_constraintVertical_bias="0.024" />
-
-            <TextView
-                android:id="@+id/movie_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.049"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/movie_poster"
-                app:layout_constraintVertical_bias="0.0" />
 
             <ImageButton
                 android:id="@+id/button_play_movie"
@@ -111,6 +105,73 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.404"
                 app:srcCompat="@drawable/ic_action_name" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.476"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movie_poster">
+
+                <TextView
+                    android:id="@+id/movie_description"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:minLines="1"
+                    android:text="TextView" />
+
+                <ImageView
+                    android:id="@+id/down_show"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginRight="25dp"
+                    app:srcCompat="@drawable/ic_round_keyboard_arrow_down_24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.476"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movie_poster">
+
+                <TextView
+                    android:id="@+id/movie_description_complete"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:minLines="1"
+                    android:text="TextView" />
+
+                <ImageView
+                    android:id="@+id/up_hide"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginRight="25dp"
+                    app:srcCompat="@drawable/ic_round_keyboard_arrow_up_24" />
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
