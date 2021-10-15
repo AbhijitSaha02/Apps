@@ -1,23 +1,35 @@
 [
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_fb.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\fb.png"
-    },
-    {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_illustration.png.flat",
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\illustration.png"
+    },
+    {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_fb.png.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\fb.png"
     },
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_round_keyboard_arrow_up_24.xml.flat",
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\ic_round_keyboard_arrow_up_24.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_arrow_back.png.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable-xxhdpi\\ic_arrow_back.png"
+    },
+    {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_arrow_back.png.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable-mdpi\\ic_arrow_back.png"
+    },
+    {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_twotone_favorite_24.xml.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\ic_twotone_favorite_24.xml"
     },
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_tw.png.flat",
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\tw.png"
+    },
+    {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_rounded_rectangle.png.flat",
@@ -26,6 +38,10 @@
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\navigation_my_nav.xml.flat",
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\navigation\\my_nav.xml"
+    },
+    {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi_ic_arrow_back.xml.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable-anydpi\\ic_arrow_back.xml"
     },
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_username_right.png.flat",
@@ -76,6 +92,10 @@
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\ic_baseline_login_24.xml"
     },
     {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_arrow_back.png.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable-xhdpi\\ic_arrow_back.png"
+    },
+    {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_login.xml.flat",
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\layout\\activity_login.xml"
     },
@@ -96,6 +116,10 @@
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable-mdpi\\ic_action_name.png"
     },
     {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_arrow_back.png.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable-hdpi\\ic_arrow_back.png"
+    },
+    {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_register.xml.flat",
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\layout\\activity_register.xml"
     },
@@ -110,6 +134,10 @@
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_search_black_24dp.xml.flat",
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\ic_search_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\layout_layout_recycler_view_trailer.xml.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\layout\\layout_recycler_view_trailer.xml"
     },
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_login_back.xml.flat",
@@ -144,12 +172,20 @@
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_movie_detail.xml.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\layout\\activity_movie_detail.xml"
+    },
+    {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_action_name.png.flat",
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_name.png"
     },
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_round_search_24.xml.flat",
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\ic_round_search_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_favorite_24.xml.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\ic_baseline_favorite_24.xml"
     },
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_home_24.xml.flat",
@@ -210,6 +246,10 @@
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_launcher_background.xml.flat",
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_play_circle_filled_24.xml.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\ic_baseline_play_circle_filled_24.xml"
     },
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_round_keyboard_arrow_down_24.xml.flat",

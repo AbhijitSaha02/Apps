@@ -2,6 +2,10 @@ package com.example.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -14,6 +18,9 @@ import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private val currentUser = FirebaseAuth.getInstance().currentUser
+
+    val trm : TopRatedMovieFragment? = null
+    val um : UpcomingMovieFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,4 +39,21 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.toolbar_menu)
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when(item.itemId) {
+//            R.id.sort_by_alphabet_asc -> {
+//                trm?.getTopRatedMovie(1)
+//                um?.getUpcomingMovie(1)
+//                Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//
+//        return super.onOptionsItemSelected(item)
+//    }
 }

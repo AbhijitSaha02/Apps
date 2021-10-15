@@ -1,10 +1,8 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +12,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 class TopRatedMovieFragment : Fragment() {
     private val BASE_URL = "https://api.themoviedb.org/"
@@ -40,8 +39,6 @@ class TopRatedMovieFragment : Fragment() {
         recyclerViewTopRated.apply {
             layoutManager = LinearLayoutManager(this.context)
 
-
-
             // Adding properties to the recycler view
             addItemDecoration(
                 DividerItemDecoration(
@@ -51,11 +48,11 @@ class TopRatedMovieFragment : Fragment() {
             )
             setHasFixedSize(true)
 
-            getTopRatedMovie()
+            getTopRatedMovie(null)
         }
     }
 
-    private fun getTopRatedMovie(){
+    fun getTopRatedMovie(menuId : Int?) {
         retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -70,6 +67,11 @@ class TopRatedMovieFragment : Fragment() {
                     response: Response<MovieTopRated>
                 ) {
                     val data = response.body()?.results
+
+                    when(menuId) {
+                        1 -> Collections.sort(data)
+                    }
+
                     recyclerViewTopRated.apply {
                         adapter = RecyclerAdapterTopRated(data)
                         adapter?.notifyDataSetChanged()

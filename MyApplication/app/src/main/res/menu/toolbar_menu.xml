@@ -16,12 +16,26 @@
         <menu>
 
             <item
-                android:title="By Rating"
+                android:title="Rating"
                 android:id="@+id/sort_by_rating"/>
 
             <item
-                android:title="By Genre"
-                android:id="@+id/sort_by_genre"/>
+                android:title="Alphabetically"
+                android:id="@+id/sort_by_alphabet">
+
+                <menu>
+
+                    <item
+                        android:title="Ascending"
+                        android:id="@+id/sort_by_alphabet_asc" />
+
+                    <item
+                        android:title="Descending"
+                        android:id="@+id/sort_by_alphabet_desc" />
+
+                </menu>
+
+            </item>
 
         </menu>
 

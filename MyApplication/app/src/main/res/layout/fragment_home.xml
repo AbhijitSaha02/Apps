@@ -7,19 +7,9 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:isScrollContainer="true"
-            android:overScrollMode="always"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:menu="@menu/toolbar_menu"
-            app:title="Movies"
-            app:titleTextColor="@android:color/white" />
+        android:id="@+id/appbar_detail"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
@@ -40,7 +30,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager"

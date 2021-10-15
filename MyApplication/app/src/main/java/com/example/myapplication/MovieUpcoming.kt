@@ -2,7 +2,6 @@ package com.example.myapplication
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import java.util.*
 
 data class MovieUpcoming(
     @SerializedName("page")
@@ -21,6 +20,12 @@ data class MovieUpcoming(
     @Expose
     var totalResults: Int? = null
 ) {
+
+    class SortByAlphabeticalAscending : Comparator<MovieUpcomingResult> {
+        override fun compare(p0: MovieUpcomingResult?, p1: MovieUpcomingResult?): Int {
+            return p0?.rating!!.compareTo(p1?.rating!!)
+        }
+    }
 
     data class MovieUpcomingResult(
         @SerializedName("poster_path")

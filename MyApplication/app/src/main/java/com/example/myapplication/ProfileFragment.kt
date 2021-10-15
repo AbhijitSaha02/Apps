@@ -19,6 +19,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 
@@ -32,6 +33,8 @@ class ProfileFragment : Fragment() {
     private lateinit var logOutButton: Button
 
     private val currentUser = FirebaseAuth.getInstance().currentUser
+
+    private val db : FirebaseFirestore = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,6 +67,18 @@ class ProfileFragment : Fragment() {
 
             profilePhone.setText(user.phoneNumber)
         }
+
+        val userDetail : HashMap<String, Any?> = hashMapOf("name" to currentUser?.displayName,
+        "email" to currentUser?.email, "phone" to currentUser?.phoneNumber)
+
+        db.collection("Users").document(currentUser?.email.toString()).set(userDetail)
+            .addOnSuccessListener {
+                Toast.makeText(view.context, "Details added",
+                    Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener {
+                Toast.makeText(view.context, it.toString(),
+                    Toast.LENGTH_SHORT).show()
+            }
 
         pic.setOnClickListener {
             takePictureIntent()

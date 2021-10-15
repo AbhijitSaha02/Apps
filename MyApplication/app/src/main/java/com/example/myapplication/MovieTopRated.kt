@@ -61,5 +61,14 @@ class MovieTopRated(
         @SerializedName("vote_average")
         @Expose
         var rating: Float? = null
-    )
+    ) : Comparable<MovieTopRatedResults> {
+        override fun compareTo(other: MovieTopRatedResults): Int {
+            return if(this.rating!! > other.rating!!){
+                1
+            }
+            else {
+                -1
+            }
+        }
+    }
 }

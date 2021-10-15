@@ -1,14 +1,11 @@
 package com.example.myapplication
 
-import android.app.Activity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
+import android.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -16,6 +13,15 @@ import com.google.android.material.tabs.TabLayoutMediator
 class HomeFragment : Fragment() {
     private lateinit var tabLayout : TabLayout
     private lateinit var viewPager : ViewPager2
+    private lateinit var toolbar: androidx.appcompat.widget.Toolbar
+
+
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     // Overriding onCreateView function of Fragment class
     override fun onCreateView(
@@ -27,8 +33,6 @@ class HomeFragment : Fragment() {
 
         tabLayout = inflate.findViewById(R.id.tabLayout)
         viewPager = inflate.findViewById(R.id.viewPager)
-
-        // Returning the layout inflater
         return inflate
     }
 
@@ -45,4 +49,9 @@ class HomeFragment : Fragment() {
             }
         }.attach()
     }
+
+
+
+
+
 }

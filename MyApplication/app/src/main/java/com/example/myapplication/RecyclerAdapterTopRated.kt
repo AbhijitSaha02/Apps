@@ -1,11 +1,13 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
@@ -53,6 +55,26 @@ class RecyclerAdapterTopRated(private var movieData : List<MovieTopRated.MovieTo
             movieRating.text = m.rating.toString().trim()
             movieGenre.text = m.genre.toString().trim()
             movieDescription.text = m.description
+
+            moviePlay.setOnClickListener {
+                val intent = Intent(itemView.context, MovieDetailActivity::class.java)
+                intent.putExtra("id", m.id)
+                intent.putExtra("poster_path", m.image)
+                intent.putExtra("title", m.title)
+                intent.putExtra("original_title", m.originalTitle)
+                intent.putExtra("original_language", m.originalLanguage)
+                intent.putExtra("release_date", m.releaseDate)
+                intent.putExtra("vote_average", m.rating)
+                intent.putExtra("popularity", m.popularity)
+                intent.putExtra("genre_ids", m.genre?.toString())
+                intent.putExtra("overview", m.description)
+                intent.putExtra("video", m.video)
+
+                intent. addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                itemView.context.startActivity(intent)
+                Toast.makeText(itemView.context, "You clicked " + m.title.toString(),
+                Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

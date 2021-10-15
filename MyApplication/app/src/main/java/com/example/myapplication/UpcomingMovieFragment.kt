@@ -14,6 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 class UpcomingMovieFragment : Fragment() {
     private val BASE_URL = "https://api.themoviedb.org/"
@@ -51,11 +52,11 @@ class UpcomingMovieFragment : Fragment() {
             )
             setHasFixedSize(true)
 
-            getUpcomingMovie()
+            getUpcomingMovie(null)
         }
     }
 
-    private fun getUpcomingMovie() {
+    fun getUpcomingMovie(menuId : Int?) {
         retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -70,6 +71,11 @@ class UpcomingMovieFragment : Fragment() {
                     response: Response<MovieUpcoming>
                 ) {
                     val data = response.body()?.results
+
+                    when(menuId) {
+                        1 -> Collections.sort(data, MovieUpcoming.SortByAlphabeticalAscending())
+                    }
+
                     recyclerViewUpcoming.apply {
                         adapter = RecyclerAdapterUpcoming(data)
                         adapter?.notifyDataSetChanged()
