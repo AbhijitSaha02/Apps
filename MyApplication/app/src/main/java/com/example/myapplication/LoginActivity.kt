@@ -173,7 +173,7 @@ class LoginActivity : AppCompatActivity() {
                    // if SignIn is successful
                    Toast.makeText(this, "Successfully signed in", Toast.LENGTH_SHORT)
                        .show()
-                   val intent = Intent(this, MainActivity::class.java)
+                   val intent = Intent(this, PhoneAuthentication::class.java)
                    startActivity(intent)
                }
                 else {

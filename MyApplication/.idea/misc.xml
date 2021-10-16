@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.13125" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.13125" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.13125" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.13125" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/layout-land/activity_register.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_login.xml" value="0.22" />
@@ -11,6 +15,7 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_phone_authentication.xml" value="0.33" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_extra.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_favourites.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_home.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_latest_movie.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_login.xml" value="0.22" />

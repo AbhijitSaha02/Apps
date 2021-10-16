@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +13,9 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QueryDocumentSnapshot
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,6 +36,7 @@ class MovieDetailActivity : AppCompatActivity() {
     private lateinit var addToFavouritesButton : Button
     private lateinit var removeFromFavouritesButton : Button
     private lateinit var recyclerViewTrailer : RecyclerView
+    private lateinit var noTrailer : TextView
 
     private val emailDetail = FirebaseAuth.getInstance().currentUser?.email.toString()
 
@@ -42,7 +46,6 @@ class MovieDetailActivity : AppCompatActivity() {
 
     private val db : FirebaseFirestore = FirebaseFirestore.getInstance()
     private val collectionRef : CollectionReference = db.collection("Users")
-    private var f : Int = 0
 
     private var id : Int? = null
     private var image : String? = null
@@ -75,6 +78,7 @@ class MovieDetailActivity : AppCompatActivity() {
         detailDescription = findViewById(R.id.detail_description)
         addToFavouritesButton = findViewById(R.id.button_favourite)
         removeFromFavouritesButton = findViewById(R.id.button_remove_favourite)
+        noTrailer = findViewById(R.id.no_trailer)
 
         if(intent.hasExtra("original_title")) {
             id = intent.extras?.getInt("id")
@@ -113,21 +117,22 @@ class MovieDetailActivity : AppCompatActivity() {
 
         watchMovieTrailer(video, id)
 
+        var f : Int = 0
+
         collectionRef.document(emailDetail).collection("Favourite Movies")
-            .whereEqualTo("title", title.toString().trim()).get()
-            .addOnSuccessListener { documents ->
-                for(document in documents) {
-                    f = 1
+            .addSnapshotListener{ querySnapshot, exception ->
+                if(exception != null) {
+                    Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
                 }
 
-            }.addOnFailureListener {
-                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-            }
+                for(docChange : DocumentChange in querySnapshot?.documentChanges!!) {
+                    Log.d("Already added docs", docChange.document.id)
+                    if(docChange.document.id.compareTo(title!!.toString()) == 0) {
+                        f = 1
+                    }
+                }
 
-        val favourite : HashMap<String, Any?> = hashMapOf("id" to id, "poster_path" to image,
-            "title" to title, "original_title" to originalTitle, "original_language" to originalLanguage,
-            "release_date" to releaseDate, "vote_average" to rating, "popularity" to popularity,
-            "genre_ids" to genre, "overview" to description, "video" to video)
+            }
 
         if(f == 0) {
             addToFavouritesButton.visibility = View.VISIBLE
@@ -137,6 +142,12 @@ class MovieDetailActivity : AppCompatActivity() {
             removeFromFavouritesButton.visibility = View.VISIBLE
             addToFavouritesButton.visibility = View.GONE
         }
+
+        val favourite : HashMap<String, Any?> = hashMapOf("id" to id, "poster_path" to image,
+            "title" to title, "original_title" to originalTitle, "original_language" to originalLanguage,
+            "release_date" to releaseDate, "vote_average" to rating, "popularity" to popularity,
+            "genre_ids" to genre, "overview" to description, "video" to video)
+
 
         addToFavouritesButton.setOnClickListener {
             addToFavourite(favourite)
@@ -186,9 +197,19 @@ class MovieDetailActivity : AppCompatActivity() {
                     call: Call<MovieVideo>,
                     response: Response<MovieVideo>) {
                     val data = response.body()?.results
-                    recyclerViewTrailer.apply {
-                        adapter = RecyclerAdapterTrailer(data)
-                        adapter?.notifyDataSetChanged()
+                    if(! data.isNullOrEmpty()) {
+                        noTrailer.visibility = View.GONE
+                        recyclerViewTrailer.visibility = View.VISIBLE
+
+                        recyclerViewTrailer.apply {
+                            adapter = RecyclerAdapterTrailer(data)
+                            adapter?.notifyDataSetChanged()
+                        }
+
+                    }
+                    else {
+                        recyclerViewTrailer.visibility = View.GONE
+                        noTrailer.visibility = View.VISIBLE
                     }
                     Toast.makeText(this@MovieDetailActivity, "Successful",
                         Toast.LENGTH_SHORT).show()

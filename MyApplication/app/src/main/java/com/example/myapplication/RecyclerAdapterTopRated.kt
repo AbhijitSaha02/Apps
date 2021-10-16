@@ -46,7 +46,7 @@ class RecyclerAdapterTopRated(private var movieData : List<MovieTopRated.MovieTo
         private var movieDescription : TextView = itemView.findViewById(R.id.movie_description)
         private var moviePlay : ImageButton = itemView.findViewById(R.id.button_play_movie)
 
-        fun bind(m: MovieTopRated.MovieTopRatedResults) {
+        fun bind(m : MovieTopRated.MovieTopRatedResults) {
             Glide.with(itemView)
                 .load(IMAGE_BASE_URL + m.image)
                 .into(moviePoster)
