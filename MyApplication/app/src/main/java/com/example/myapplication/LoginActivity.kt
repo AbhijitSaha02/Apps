@@ -4,12 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -21,11 +19,12 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var signUp : TextView
-    private lateinit var login : TextView
+    private lateinit var login : Button
     private lateinit var emailLogin : TextInputEditText
     private lateinit var passwordLogin : TextInputEditText
     private lateinit var progressBar : ProgressBar
-    private lateinit var googleSignIn : ImageView
+    private lateinit var googleSignIn : Button
+    private lateinit var phoneSignIn : Button
     private lateinit var forgotPassword : TextView
     // Firebase object
     private lateinit var mAuth : FirebaseAuth
@@ -44,8 +43,9 @@ class LoginActivity : AppCompatActivity() {
         login = findViewById(R.id.button_user_login)
         emailLogin = findViewById(R.id.email_login)
         passwordLogin = findViewById(R.id.password_login)
-        googleSignIn = findViewById(R.id.button_googleLogin)
+        googleSignIn = findViewById(R.id.button_google_login)
         forgotPassword = findViewById(R.id.forgotPassword)
+        phoneSignIn = findViewById(R.id.user_phone_login)
 
         // Actions to perform when LOGIN is clicked
         login.setOnClickListener {
@@ -79,7 +79,10 @@ class LoginActivity : AppCompatActivity() {
 
         // Opening the RegisterActivity when SignUp is clicked
         signUp.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            val intent = Intent(this, RegisterActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+            startActivity(intent)
         }
 
         // Setting a onClickListener on Google ImageView
@@ -97,6 +100,10 @@ class LoginActivity : AppCompatActivity() {
 
             // Calling the functions which will perform of all the sign in operations with google
             signInWithGoogle()
+        }
+
+        phoneSignIn.setOnClickListener {
+            phoneUserLogin()
         }
 
         forgotPassword.setOnClickListener {
@@ -117,7 +124,7 @@ class LoginActivity : AppCompatActivity() {
                 // If task is successful making the progressbar invisible again
                 progressBar.visibility = View.GONE
 
-                val intent = Intent(this, PhoneAuthentication::class.java).apply {
+                val intent = Intent(this, MainActivity::class.java).apply {
                     /* Setting flags so that the user cannot see the register activity again
                     if the user clicks back again
                     Starting the PhoneAuthentication Activity by closing all the other activities,
@@ -131,7 +138,7 @@ class LoginActivity : AppCompatActivity() {
             }
             else {
                 // Showing a error if the task fails
-                Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
+                Log.e("Login Activity", task.exception?.message.toString())
             }
         }
     }
@@ -148,17 +155,16 @@ class LoginActivity : AppCompatActivity() {
                 try {
                     // If the Google SignIn was successful, authenticate with firebase
                     val account = task.getResult(ApiException::class.java)!!
-                    Toast.makeText(this, "FireBaseAuthWithGoogle" + account.id, Toast
-                        .LENGTH_SHORT).show()
+                    Log.d("Login Activity", "FireBaseAuthWithGoogle " + account.id)
                     firebaseAuthWithGoogle(account.idToken!!)
                 }
                 catch(e : ApiException) {
                     // Google SignIn failed, so updating Ui appropriately
-                    Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+                    Log.e("Login Activity", e.message.toString())
                 }
             }
             else {
-                Toast.makeText(this, exception?.message, Toast.LENGTH_SHORT).show()
+                Log.e("Login Activity", exception?.message.toString())
             }
         }
     }
@@ -171,14 +177,16 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                if(task.isSuccessful)  {
                    // if SignIn is successful
-                   Toast.makeText(this, "Successfully signed in", Toast.LENGTH_SHORT)
-                       .show()
-                   val intent = Intent(this, PhoneAuthentication::class.java)
+                   Log.d("Login Activity", "Successfully Signed In")
+
+                   val intent = Intent(this, MainActivity::class.java).apply {
+                       flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                   }
                    startActivity(intent)
                }
                 else {
                    // if SignIn is successful
-                   Toast.makeText(this, "Sign in failed", Toast.LENGTH_SHORT).show()
+                   Log.e("Login Activity", task.exception?.message.toString())
                }
             }
     }
@@ -186,5 +194,12 @@ class LoginActivity : AppCompatActivity() {
     private fun signInWithGoogle() {
         val signInIntent  = googleSignInClient.signInIntent
         resultLauncher.launch(signInIntent)
+    }
+
+    private fun phoneUserLogin() {
+        val intent = Intent(this, PhoneAuthentication::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        startActivity(intent)
     }
 }

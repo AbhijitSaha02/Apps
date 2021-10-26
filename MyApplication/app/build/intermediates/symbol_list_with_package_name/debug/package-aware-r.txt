@@ -67,6 +67,10 @@ animator nav_default_enter_anim
 animator nav_default_exit_anim
 animator nav_default_pop_enter_anim
 animator nav_default_pop_exit_anim
+array com_google_android_gms_fonts_certs
+array com_google_android_gms_fonts_certs_dev
+array com_google_android_gms_fonts_certs_prod
+array preloaded_fonts
 attr SharedValue
 attr SharedValueId
 attr action
@@ -302,6 +306,10 @@ attr circularflow_defaultAngle
 attr circularflow_defaultRadius
 attr circularflow_radiusInDP
 attr circularflow_viewCenter
+attr civ_border_color
+attr civ_border_overlay
+attr civ_border_width
+attr civ_circle_background_color
 attr clearsTag
 attr clickAction
 attr clockFaceBackgroundColor
@@ -1899,6 +1907,7 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable background
 drawable bg
+drawable bg_gradient
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1928,6 +1937,7 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
+drawable custom_button
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -2200,6 +2210,9 @@ drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_launcher_movieporium
+drawable ic_launcher_movieporium_background
+drawable ic_launcher_movieporium_foreground
 drawable ic_login_back
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
@@ -2247,14 +2260,18 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable password_right
 drawable rounded_rectangle
+drawable splash_background
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable top_bcakground
 drawable tw
 drawable username_right
 drawable wave
+font alex_brush
 font poppinsbold
 font poppinsmedium
+font summer_calling
 id AFRIKAANS
 id ALT
 id ARABIC
@@ -2384,18 +2401,12 @@ id action_bar_title
 id action_container
 id action_context_bar
 id action_divider
-id action_favouritesFragment_to_homeFragment2
-id action_favouritesFragment_to_profileFragment
-id action_homeFragment_to_favouritesFragment2
-id action_homeFragment_to_profileFragment
 id action_image
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
-id action_profileFragment_to_favouritesFragment
-id action_profileFragment_to_homeFragment
 id action_text
 id actions
 id activity_chooser_view_content
@@ -2411,8 +2422,12 @@ id animateToEnd
 id animateToStart
 id antiClockwise
 id anticipate
-id app_bar_search
+id app_bar_search_popular
+id app_bar_search_top_rated
+id app_bar_search_upcoming
+id app_name
 id appbar_detail
+id appbar_main
 id arc
 id asConfigured
 id async
@@ -2439,9 +2454,8 @@ id browser_actions_menu_items
 id browser_actions_menu_view
 id buttonPanel
 id button_favourite
-id button_googleLogin
-id button_googleRegister
-id button_login
+id button_google_login
+id button_google_register
 id button_logout
 id button_play_movie
 id button_remove_favourite
@@ -2456,6 +2470,7 @@ id cancel_action
 id cancel_button
 id cardView
 id cardViewRoot
+id card_view_profile
 id carryVelocity
 id ccp
 id center
@@ -2463,7 +2478,6 @@ id center_horizontal
 id center_vertical
 id chain
 id chains
-id checkBox
 id checkbox
 id checked
 id chip
@@ -2482,7 +2496,6 @@ id collapseActionView
 id collapsing_toolbar_movie_detail
 id confirm_button
 id constraint
-id constraintLayout
 id container
 id content
 id contentPanel
@@ -2593,13 +2606,14 @@ id ignore
 id ignoreRequest
 id image
 id imageView
-id imageView10
 id imageView11
+id imageView2
+id imageView3
 id imageView4
 id imageView5
 id imageView6
+id imageView7
 id imageView8
-id imageView9
 id imageView_arrow
 id image_flag
 id img_clear_query
@@ -2624,15 +2638,14 @@ id line1
 id line3
 id linear
 id linearLayout
+id linearLayout2
 id linearLayout3
 id linearLayout4
-id linearLayout5
 id linearLayout6
 id linear_flag_border
 id linear_flag_holder
 id listMode
 id list_item
-id loginFragment
 id masked
 id match_constraint
 id match_parent
@@ -2656,7 +2669,9 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id media_actions
-id menu_sort
+id menu_sort_popular
+id menu_sort_top_rated
+id menu_sort_upcoming
 id message
 id middle
 id mini
@@ -2763,7 +2778,7 @@ id recyclerView_topRatedMovies
 id recyclerView_trailer
 id recyclerView_upcomingMovies
 id recycler_countryDialog
-id recylcerView_latestMovies
+id recylcerView_popularMovies
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2805,7 +2820,6 @@ id showCustom
 id showHome
 id showTitle
 id signUp
-id sign_up
 id sin
 id skipCollapsed
 id skipped
@@ -2814,10 +2828,19 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
-id sort_by_alphabet
-id sort_by_alphabet_asc
-id sort_by_alphabet_desc
-id sort_by_rating
+id sort_alphabet_asc_popular
+id sort_alphabet_asc_top_rated
+id sort_alphabet_asc_upcoming
+id sort_alphabet_desc_popular
+id sort_alphabet_desc_top_rated
+id sort_alphabet_desc_upcoming
+id sort_alphabet_popular
+id sort_alphabet_top_rated
+id sort_alphabet_upcoming
+id sort_popularity_top_rated
+id sort_popularity_upcoming
+id sort_rating_popular
+id sort_rating_upcoming
 id south
 id spacer
 id special_effects_controller_view_tag
@@ -2898,7 +2921,7 @@ id titleDividerNoCustom
 id title_template
 id toggle
 id toolbar
-id toolbar_home
+id toolbar_main
 id toolbar_movie_detail
 id top
 id topPanel
@@ -2919,6 +2942,8 @@ id unlabeled
 id up
 id up_hide
 id useLogo
+id user_phone_login
+id user_phone_register
 id username_register
 id verificationCode
 id verifyCode
@@ -3017,6 +3042,7 @@ layout activity_main
 layout activity_movie_detail
 layout activity_phone_authentication
 layout activity_register
+layout activity_splash_screen
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog
@@ -3038,8 +3064,7 @@ layout design_text_input_start_icon
 layout fastscroll__default_bubble
 layout fragment_favourites
 layout fragment_home
-layout fragment_latest_movie
-layout fragment_login
+layout fragment_popular_movie
 layout fragment_profile
 layout fragment_top_rated_movie
 layout fragment_upcoming_movie
@@ -3127,8 +3152,13 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu bottom_navigation_bar
-menu toolbar_menu
+menu toolbar_menu_popular
+menu toolbar_menu_top_rated
+menu toolbar_menu_upcoming
 mipmap ic_launcher
+mipmap ic_launcher_movieporium
+mipmap ic_launcher_movieporium_adaptive_back
+mipmap ic_launcher_movieporium_adaptive_fore
 mipmap ic_launcher_round
 navigation my_nav
 plurals mtrl_badge_content_description
@@ -4083,6 +4113,7 @@ styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCo
 styleable Carousel carousel_backwardTransition carousel_emptyViewsBehavior carousel_firstView carousel_forwardTransition carousel_infinite carousel_nextState carousel_previousState carousel_touchUpMode carousel_touchUp_dampeningFactor carousel_touchUp_velocityThreshold
 styleable Chip android_textAppearance android_textSize android_textColor android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconTint checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipMinTouchTargetSize chipStartPadding chipStrokeColor chipStrokeWidth chipSurfaceColor closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible ensureMinTouchTargetSize hideMotionSpec iconEndPadding iconStartPadding rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical selectionRequired singleLine singleSelection
+styleable CircleImageView civ_border_color civ_border_overlay civ_border_width civ_circle_background_color
 styleable CircularProgressIndicator indicatorDirectionCircular indicatorInset indicatorSize
 styleable ClockFaceView clockFaceBackgroundColor clockNumberTextColor
 styleable ClockHandView clockHandColor materialCircleRadius selectorSize

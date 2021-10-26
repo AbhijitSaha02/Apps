@@ -9,7 +9,7 @@ data class MovieUpcoming(
     var page: Int? = null,
     @SerializedName("results")
     @Expose
-    var results: List<MovieUpcomingResult>? = null,
+    var results: ArrayList<MovieUpcomingResult>? = null,
     @SerializedName("dates")
     @Expose
     var dates: Dates? = null,

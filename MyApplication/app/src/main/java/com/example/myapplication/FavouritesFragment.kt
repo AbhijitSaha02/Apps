@@ -1,11 +1,11 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,8 +14,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
-import retrofit2.Retrofit
 
 class FavouritesFragment : Fragment() {
     private val BASE_URL = "https://api.themoviedb.org/"
@@ -69,7 +67,7 @@ class FavouritesFragment : Fragment() {
         collectionRef.document(emailDetail).collection("Favourite Movies")
             .addSnapshotListener{ querySnapshot, exception ->
                 if(exception != null) {
-                    Toast.makeText(this.context, exception.message, Toast.LENGTH_SHORT).show()
+                    Log.e("Favourites Fragment", exception.message.toString())
                 }
 
                 for(docChange : DocumentChange in querySnapshot?.documentChanges!!) {

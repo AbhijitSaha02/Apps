@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/app_bar_search_upcoming"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always" />
+
+    <item
+        android:title="Sort"
+        android:id="@+id/menu_sort_upcoming">
+
+        <menu>
+
+            <item
+                android:title="Alphabetically"
+                android:id="@+id/sort_alphabet_upcoming">
+
+                <menu>
+
+                    <item
+                        android:title="Ascending"
+                        android:id="@+id/sort_alphabet_asc_upcoming" />
+
+                    <item
+                        android:title="Descending"
+                        android:id="@+id/sort_alphabet_desc_upcoming" />
+
+                </menu>
+
+            </item>
+
+            <item
+                android:title="Rating"
+                android:id="@+id/sort_rating_upcoming" />
+
+            <item
+                android:title="Popularity"
+                android:id="@+id/sort_popularity_upcoming"/>
+
+        </menu>
+
+    </item>
+
+</menu>

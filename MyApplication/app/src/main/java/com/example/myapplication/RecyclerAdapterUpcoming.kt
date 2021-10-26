@@ -1,13 +1,13 @@
 package com.example.myapplication
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
@@ -74,8 +74,7 @@ class RecyclerAdapterUpcoming(private var movieData : List<MovieUpcoming.MovieUp
 
                  intent. addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                  itemView.context.startActivity(intent)
-                 Toast.makeText(itemView.context, "You clicked " + m.title.toString(),
-                     Toast.LENGTH_SHORT).show()
+                 Log.d("RecyclerTrailerUp", "Clicked " + m.title.toString())
              }
          }
     }

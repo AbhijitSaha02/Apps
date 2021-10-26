@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
@@ -112,8 +113,7 @@ class PhoneAuthentication : AppCompatActivity() {
 
         override fun onVerificationFailed(exception : FirebaseException) {
             // If verification fails, then displaying the toast message
-            Toast.makeText(this@PhoneAuthentication, exception.message!!, Toast.LENGTH_SHORT)
-                .show()
+            Log.e("Phone Auth", exception.message.toString())
         }
 
         // When the auto verification is not done and the user has to enter the code
@@ -124,16 +124,18 @@ class PhoneAuthentication : AppCompatActivity() {
     }
 
     private fun addPhoneNumber(it: PhoneAuthCredential) {
-        mAuth.currentUser?.updatePhoneNumber(it)?.addOnCompleteListener { task ->
+        mAuth.signInWithCredential(it).addOnCompleteListener { task ->
             if(task.isSuccessful) {
-                Toast.makeText(this, "Phone Number Updated", Toast.LENGTH_SHORT).show()
+                Log.d("Phone Auth", "Phone Number Updated")
 
-                val intent = Intent(this, MainActivity::class.java)
-
+//                val user = task.result?.user
+                val intent = Intent(this, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
                 startActivity(intent)
             }
             else {
-                Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
+                Log.e("Phone Auth", task.exception?.message.toString())
             }
         }
     }

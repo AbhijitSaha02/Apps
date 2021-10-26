@@ -4,12 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -20,12 +18,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
 class RegisterActivity : AppCompatActivity() {
-    private lateinit var register : TextView
+    private lateinit var register : Button
     private lateinit var usernameRegister : TextInputEditText
     private lateinit var emailRegister : TextInputEditText
     private lateinit var passwordRegister : TextInputEditText
     private lateinit var progressBar : ProgressBar
-    private lateinit var googleSignUp : ImageView
+    private lateinit var googleSignUp : Button
+    private lateinit var phoneRegister : Button
     // Firebase object
     private lateinit var mAuth : FirebaseAuth
 
@@ -43,7 +42,8 @@ class RegisterActivity : AppCompatActivity() {
         usernameRegister = findViewById(R.id.username_register)
         emailRegister = findViewById(R.id.email_register)
         passwordRegister = findViewById(R.id.password_register)
-        googleSignUp = findViewById(R.id.button_googleRegister)
+        googleSignUp = findViewById(R.id.button_google_register)
+        phoneRegister = findViewById(R.id.user_phone_register)
 
         // Actions to perform when SIGNUP is clicked
         register.setOnClickListener {
@@ -94,6 +94,10 @@ class RegisterActivity : AppCompatActivity() {
 
             signUpWithGoogle()
         }
+
+        phoneRegister.setOnClickListener {
+            phoneUserRegister()
+        }
     }
 
     private fun userRegister(email: String, password: String) {
@@ -109,28 +113,24 @@ class RegisterActivity : AppCompatActivity() {
                 // Sending a verification email to the user
                 mAuth.currentUser?.sendEmailVerification()?.addOnCompleteListener{
                     if(it.isSuccessful) {
-                        Toast.makeText(this, "Verification Email Sent",
-                            Toast.LENGTH_SHORT).show()
+                        Log.d("Register Activity", "Verification E-mail Sent")
+
+                        val intent = Intent(this, LoginActivity::class.java).apply {
+                            // Flags so that the user cannot see the register activity again
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        }
+
+                        startActivity(intent)
                     }
                     // If there is error due to which email wasn't send
                     else {
-                        Toast.makeText(this, it.exception?.message, Toast.LENGTH_SHORT)
-                            .show()
+                        Log.e("Register Activity", it.exception?.message.toString())
                     }
                 }
 
-                val intent = Intent(this, PhoneAuthentication::class.java).apply {
-                    // Flags so that the user cannot see the register activity again
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                }
-
-                startActivity(intent)
-
             }
             else {
-                task.exception?.message?.let {
-                    Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-                }
+                Log.e("Register Activity", task.exception?.message.toString())
             }
         }
     }
@@ -147,17 +147,16 @@ class RegisterActivity : AppCompatActivity() {
                 try {
                     // If the Google SignIn was successful, authenticate with firebase
                     val account = task.getResult(ApiException::class.java)!!
-                    Toast.makeText(this, "FireBaseAuthWithGoogle" + account.id, Toast
-                        .LENGTH_SHORT).show()
+                    Log.d("Register Activity", "FireBaseAuthWithGoogle " + account.id)
                     firebaseAuthWithGoogle(account.idToken!!)
                 }
                 catch(e : ApiException) {
                     // Google SignIn failed, so displaying message appropriately
-                    Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+                    Log.e("Register Activity", e.message.toString())
                 }
             }
             else {
-                Toast.makeText(this, exception?.message, Toast.LENGTH_SHORT).show()
+                Log.e("Register Activity", exception?.message.toString())
             }
         }
     }
@@ -168,14 +167,18 @@ class RegisterActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if(task.isSuccessful)  {
                     // if SignIn is successful
-                    Toast.makeText(this, "Successfully signed in", Toast.LENGTH_SHORT)
-                        .show()
-                    val intent = Intent(this, PhoneAuthentication::class.java)
+                    Log.d("Register Activity", "Sign In Successful")
+
+                    val intent = Intent(this, LoginActivity::class.java).apply {
+                        // Flags so that the user cannot see the register activity again
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    }
+
                     startActivity(intent)
                 }
                 else {
                     // if SignIn is successful
-                    Toast.makeText(this, "Sign in failed", Toast.LENGTH_SHORT).show()
+                    Log.e("Register Activity", task.exception?.message.toString())
                 }
             }
     }
@@ -184,5 +187,14 @@ class RegisterActivity : AppCompatActivity() {
 
         val signInIntent  = googleSignInClient.signInIntent
         resultLauncher.launch(signInIntent)
+    }
+
+    private fun phoneUserRegister() {
+        val intent = Intent(this, PhoneAuthentication::class.java).apply {
+            // Flags so that the user cannot see the register activity again
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+
+        startActivity(intent)
     }
 }

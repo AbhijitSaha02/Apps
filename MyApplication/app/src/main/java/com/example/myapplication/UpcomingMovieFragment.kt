@@ -1,11 +1,10 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
+import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +13,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
 
 class UpcomingMovieFragment : Fragment() {
     private val BASE_URL = "https://api.themoviedb.org/"
@@ -22,6 +20,8 @@ class UpcomingMovieFragment : Fragment() {
     private lateinit var retrofit: Retrofit
 
     private lateinit var recyclerViewUpcoming: RecyclerView
+
+    private var data : ArrayList<MovieUpcoming.MovieUpcomingResult>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +36,7 @@ class UpcomingMovieFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerViewUpcoming = view.findViewById(R.id.recyclerView_upcomingMovies)
+        setHasOptionsMenu(true)
 
         // apply adds all the properties of our RecyclerView in a single block
         recyclerViewUpcoming.apply {
@@ -52,11 +53,11 @@ class UpcomingMovieFragment : Fragment() {
             )
             setHasFixedSize(true)
 
-            getUpcomingMovie(null)
+            getUpcomingMovie()
         }
     }
 
-    fun getUpcomingMovie(menuId : Int?) {
+    fun getUpcomingMovie() {
         retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -70,24 +71,96 @@ class UpcomingMovieFragment : Fragment() {
                     call: Call<MovieUpcoming>,
                     response: Response<MovieUpcoming>
                 ) {
-                    val data = response.body()?.results
-
-                    when(menuId) {
-                        1 -> Collections.sort(data, MovieUpcoming.SortByAlphabeticalAscending())
-                    }
+                    data = response.body()?.results
 
                     recyclerViewUpcoming.apply {
                         adapter = RecyclerAdapterUpcoming(data)
                         adapter?.notifyDataSetChanged()
                     }
-                    Toast.makeText(this@UpcomingMovieFragment.context, "Successful",
-                        Toast.LENGTH_SHORT).show()
+                    Log.d("Upcoming Movie Frag", "Successful")
                 }
 
                 override fun onFailure(call: Call<MovieUpcoming>, t: Throwable) {
-                    Toast.makeText(this@UpcomingMovieFragment.context, t.message,
-                        Toast.LENGTH_SHORT).show()
+                    Log.e("Upcoming Movie Frag", t.message.toString())
                 }
             })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+
+        inflater.inflate(R.menu.toolbar_menu_upcoming, menu)
+
+        val search : MenuItem? = menu.findItem(R.id.app_bar_search_upcoming)
+        val searchView = search?.actionView as SearchView
+        searchView.queryHint = "Search"
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                if(newText != "") {
+
+                    val newData = data?.filter { movieUpcomingResults ->
+                        val s = (movieUpcomingResults.title)?.lowercase()
+                        newText!!.lowercase().let {
+                            s!!.contains(it, ignoreCase = true)
+                        }
+                    }
+                    recyclerViewUpcoming.adapter = RecyclerAdapterUpcoming(newData)
+                    recyclerViewUpcoming.adapter?.notifyDataSetChanged()
+                }
+                else {
+                    recyclerViewUpcoming.adapter = RecyclerAdapterUpcoming(data)
+                    recyclerViewUpcoming.adapter!!.notifyDataSetChanged()
+                }
+
+                return true
+            }
+
+        })
+
+        return super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.sort_alphabet_asc_upcoming -> {
+                val sortedData = data?.sortedBy { movieUpcomingResults ->
+                    movieUpcomingResults.title
+                }
+                recyclerViewUpcoming.adapter = RecyclerAdapterUpcoming(sortedData)
+                recyclerViewUpcoming.adapter!!.notifyDataSetChanged()
+            }
+
+            R.id.sort_alphabet_desc_upcoming -> {
+                val sortedData = data?.sortedByDescending { movieUpcomingResults ->
+                    movieUpcomingResults.title
+                }
+                recyclerViewUpcoming.adapter = RecyclerAdapterUpcoming(sortedData)
+                recyclerViewUpcoming.adapter!!.notifyDataSetChanged()
+            }
+
+            R.id.sort_rating_upcoming -> {
+                val sortedData = data?.sortedByDescending { movieUpcomingResults ->
+                    movieUpcomingResults.rating
+                }
+                recyclerViewUpcoming.adapter = RecyclerAdapterUpcoming(sortedData)
+                recyclerViewUpcoming.adapter!!.notifyDataSetChanged()
+            }
+
+            R.id.sort_popularity_upcoming -> {
+                val sortedData = data?.sortedByDescending { movieUpcomingResults ->
+                    movieUpcomingResults.popularity
+                }
+                recyclerViewUpcoming.adapter = RecyclerAdapterUpcoming(sortedData)
+                recyclerViewUpcoming.adapter!!.notifyDataSetChanged()
+            }
+        }
+
+        return false
     }
 }

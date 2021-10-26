@@ -2,15 +2,15 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerAdapterTrailer(var trailerList : List<MovieVideo.MovieVideoResults>?) :
+class RecyclerAdapterTrailer(private var trailerList : List<MovieVideo.MovieVideoResults>?) :
 RecyclerView.Adapter<RecyclerAdapterTrailer.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -43,28 +43,26 @@ RecyclerView.Adapter<RecyclerAdapterTrailer.ViewHolder>() {
         private var officialTrailer : TextView = itemView.findViewById(R.id.trailer_official)
         private var watchTrailerButton : Button = itemView.findViewById(R.id.button_trailer)
 
+        private val off : String = "Official Trailer"
+        private val unOff : String = "Unofficial Trailer"
+
         fun bind(m : MovieVideo.MovieVideoResults) {
             trailerName.text = m.name
             if(m.official == true) {
-                officialTrailer.text = "Official Trailer"
+                officialTrailer.text = off
             }
             else {
-                officialTrailer.text = "UnOfficial Trailer"
+                officialTrailer.text = unOff
             }
 
             watchTrailerButton.setOnClickListener {
-//                val pos = bindingAdapterPosition
-//                if(pos != RecyclerView.NO_POSITION) {
-//
-//                }
 
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(VIDEO_BASE_URL + m.key))
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 intent.putExtra("key", m.key)
                 itemView.context.startActivity(intent)
 
-                Toast.makeText(itemView.context, "You clicked " + m.name, Toast.LENGTH_SHORT)
-                    .show()
+                Log.d("RecyclerAdapterTrailer", "Clicked $trailerName")
             }
         }
     }

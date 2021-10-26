@@ -12,10 +12,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.google.firebase.firestore.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,6 +43,8 @@ class MovieDetailActivity : AppCompatActivity() {
 
     private val db : FirebaseFirestore = FirebaseFirestore.getInstance()
     private val collectionRef : CollectionReference = db.collection("Users")
+
+    private var favouriteMovieList : ArrayList<String> = arrayListOf()
 
     private var id : Int? = null
     private var image : String? = null
@@ -80,7 +79,7 @@ class MovieDetailActivity : AppCompatActivity() {
         removeFromFavouritesButton = findViewById(R.id.button_remove_favourite)
         noTrailer = findViewById(R.id.no_trailer)
 
-        if(intent.hasExtra("original_title")) {
+        if (intent.hasExtra("original_title")) {
             id = intent.extras?.getInt("id")
             image = "https://image.tmdb.org/t/p/w500/" +
                     intent.extras?.getString("poster_path")
@@ -106,42 +105,30 @@ class MovieDetailActivity : AppCompatActivity() {
             detailPopularity.text = popularity.toString()
             detailGenre.text = genre
             detailDescription.text = description
-
             detailCollapsingToolbar.title = title
             detailCollapsingToolbar.setExpandedTitleTextAppearance(R.style.ExpandedAppBar)
             detailCollapsingToolbar.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar)
+        } else {
+            Log.e("Movie Detail", "Unsuccessful")
         }
-        else {
-            Toast.makeText(this, "Unsuccessful", Toast.LENGTH_SHORT).show()
-        }
 
-        watchMovieTrailer(video, id)
+        watchMovieTrailer(id)
 
-        var f : Int = 0
+        collectionRef.document(emailDetail).collection("Favourite Movies").get()
+            .addOnSuccessListener { documents ->
 
-        collectionRef.document(emailDetail).collection("Favourite Movies")
-            .addSnapshotListener{ querySnapshot, exception ->
-                if(exception != null) {
-                    Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
-                }
+                for (document in documents) {
+                    Log.e("Already added docs", document.id)
+                    val data = document.id
+                    favouriteMovieList.add(data)
 
-                for(docChange : DocumentChange in querySnapshot?.documentChanges!!) {
-                    Log.d("Already added docs", docChange.document.id)
-                    if(docChange.document.id.compareTo(title!!.toString()) == 0) {
-                        f = 1
+                    if (title.toString() == document.id) {
+                        removeFromFavouritesButton.visibility = View.VISIBLE
+                        addToFavouritesButton.visibility = View.GONE
                     }
                 }
-
             }
 
-        if(f == 0) {
-            addToFavouritesButton.visibility = View.VISIBLE
-            removeFromFavouritesButton.visibility = View.GONE
-        }
-        else {
-            removeFromFavouritesButton.visibility = View.VISIBLE
-            addToFavouritesButton.visibility = View.GONE
-        }
 
         val favourite : HashMap<String, Any?> = hashMapOf("id" to id, "poster_path" to image,
             "title" to title, "original_title" to originalTitle, "original_language" to originalLanguage,
@@ -150,10 +137,17 @@ class MovieDetailActivity : AppCompatActivity() {
 
 
         addToFavouritesButton.setOnClickListener {
-            addToFavourite(favourite)
+            if(emailDetail != null) {
+                addToFavourite(favourite)
 
-            addToFavouritesButton.visibility = View.GONE
-            removeFromFavouritesButton.visibility = View.VISIBLE
+                addToFavouritesButton.visibility = View.GONE
+                removeFromFavouritesButton.visibility = View.VISIBLE
+            }
+            else{
+                Toast.makeText(this,
+                    "Please login with email-id before using the favourites functionality",
+                    Toast.LENGTH_SHORT).show()
+            }
         }
 
         removeFromFavouritesButton.setOnClickListener {
@@ -164,7 +158,7 @@ class MovieDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun watchMovieTrailer(video : Boolean?, id : Int?) {
+    private fun watchMovieTrailer(id: Int?) {
         recyclerViewTrailer = findViewById(R.id.recyclerView_trailer)
         recyclerViewTrailer.apply {
             layoutManager = LinearLayoutManager(this.context)
@@ -178,12 +172,12 @@ class MovieDetailActivity : AppCompatActivity() {
 
             setHasFixedSize(true)
 
-            getTrailer(video, id)
+            getTrailer(id)
         }
 
     }
 
-    private fun getTrailer(video : Boolean?, id : Int?) {
+    private fun getTrailer(id: Int?) {
         retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -211,13 +205,11 @@ class MovieDetailActivity : AppCompatActivity() {
                         recyclerViewTrailer.visibility = View.GONE
                         noTrailer.visibility = View.VISIBLE
                     }
-                    Toast.makeText(this@MovieDetailActivity, "Successful",
-                        Toast.LENGTH_SHORT).show()
+                    Log.d("Movie Detail", "Successful")
                 }
 
                 override fun onFailure(call: Call<MovieVideo>, t: Throwable) {
-                    Toast.makeText(this@MovieDetailActivity, "UnSuccessful",
-                        Toast.LENGTH_SHORT).show()
+                    Log.e("Movie Detail", t.message.toString())
                 }
             })
     }
@@ -229,8 +221,7 @@ class MovieDetailActivity : AppCompatActivity() {
                 Toast.makeText(this@MovieDetailActivity, "Added to Favourites",
                     Toast.LENGTH_SHORT).show()
             }.addOnFailureListener {
-                Toast.makeText(this@MovieDetailActivity, it.toString(),
-                    Toast.LENGTH_SHORT).show()
+                Log.e("Movie Detail", it.message.toString())
             }
     }
 
@@ -240,8 +231,7 @@ class MovieDetailActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 Toast.makeText(this, "Removed from Favourites", Toast.LENGTH_SHORT).show()
             }.addOnFailureListener {
-                Toast.makeText(this@MovieDetailActivity, it.toString(),
-                    Toast.LENGTH_SHORT).show()
+                Log.e("Movie Detail", it.message.toString())
             }
     }
 

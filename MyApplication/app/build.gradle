@@ -79,10 +79,17 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
 
     //Glide implementation
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
     // Retrofit implementation
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // Circular ImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // Blur View
+    implementation 'com.eightbitlab:blurview:1.6.6'
+    implementation 'com.eightbitlab:supportrenderscriptblur:1.0.2'
 }

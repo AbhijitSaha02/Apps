@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -69,16 +70,8 @@ class ProfileFragment : Fragment() {
         }
 
         val userDetail : HashMap<String, Any?> = hashMapOf("name" to currentUser?.displayName,
-        "email" to currentUser?.email, "phone" to currentUser?.phoneNumber)
-
-        db.collection("Users").document(currentUser?.email.toString()).set(userDetail)
-            .addOnSuccessListener {
-                Toast.makeText(view.context, "Details added",
-                    Toast.LENGTH_SHORT).show()
-            }.addOnFailureListener {
-                Toast.makeText(view.context, it.toString(),
-                    Toast.LENGTH_SHORT).show()
-            }
+            "email" to currentUser?.email, "phone" to currentUser?.phoneNumber,
+            "image" to currentUser?.photoUrl.toString())
 
         pic.setOnClickListener {
             takePictureIntent()
@@ -106,13 +99,18 @@ class ProfileFragment : Fragment() {
             currentUser?.updateProfile(updates)
                 ?.addOnCompleteListener { task ->
                     if(task.isSuccessful) {
-                        Toast.makeText(this.context, "Profile Updated", Toast.LENGTH_SHORT)
-                            .show()
+                        Log.d("Profile Fragment", "Profile Updated Successfully")
                     }
                     else {
-                        Toast.makeText(this.context, task.exception?.message!!, Toast.LENGTH_SHORT)
-                            .show()
+                        Log.e("Profile Fragment", task.exception?.message.toString())
                     }
+                }
+
+            db.collection("Users").document(currentUser?.email.toString()).set(userDetail)
+                .addOnSuccessListener {
+                    Toast.makeText(this.context, "Details added", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener {
+                    Log.e("Profile Fragment", it.message.toString())
                 }
         }
 
@@ -122,7 +120,7 @@ class ProfileFragment : Fragment() {
                 setPositiveButton("Yes") {  _, _ ->
 
                     FirebaseAuth.getInstance().signOut()
-                    val intent = Intent(this.context, MainActivity::class.java)
+                    val intent = Intent(this.context, LoginActivity::class.java)
                     startActivity(intent)
 
                 }
@@ -162,8 +160,7 @@ class ProfileFragment : Fragment() {
                 storageReference.downloadUrl.addOnCompleteListener { urlTask ->
                     urlTask.result?.let {
                         imageUri = it
-                        Toast.makeText(this.context, imageUri.toString(), Toast.LENGTH_SHORT)
-                            .show()
+                        Log.d("Profile Fragment", imageUri.toString())
 
                         pic.setImageBitmap(imageBitmap)
                     }
@@ -171,7 +168,7 @@ class ProfileFragment : Fragment() {
             }
             else {
                 uploadTask.exception?.let {
-                    Toast.makeText(this.context, it.message!!, Toast.LENGTH_SHORT).show()
+                    Log.e("Profile Fragment", it.message.toString())
                 }
             }
         }

@@ -7,8 +7,10 @@ import retrofit2.http.Query
 
 interface MovieApiInterface {
 
-    @GET("3/movie/latest?api_key=f1bbbddac88dd9cfd727c2673fe987c8&language=en-US")
-    fun getLatestMovieList() : Call<MovieLatest>
+    @GET("3/movie/popular?api_key=f1bbbddac88dd9cfd727c2673fe987c8&language=en-US")
+    fun getLatestMovieList(
+        @Query("page") page : Int
+    ) : Call<MoviePopular>
 
     @GET("3/movie/top_rated?api_key=f1bbbddac88dd9cfd727c2673fe987c8&language=en-US")
     fun getTopRatedMovieList(

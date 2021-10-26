@@ -9,7 +9,7 @@ class MovieTopRated(
     var page: Int? = null,
     @SerializedName("results")
     @Expose
-    var results: List<MovieTopRatedResults>? = null,
+    var results: ArrayList<MovieTopRatedResults>? = null,
     @SerializedName("total_results")
     @Expose
     var totalResults: Int? = null,
@@ -63,7 +63,7 @@ class MovieTopRated(
         var rating: Float? = null
     ) : Comparable<MovieTopRatedResults> {
         override fun compareTo(other: MovieTopRatedResults): Int {
-            return if(this.rating!! > other.rating!!){
+            return if(this.title!! > other.title!!){
                 1
             }
             else {

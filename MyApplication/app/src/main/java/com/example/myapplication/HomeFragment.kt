@@ -1,10 +1,9 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import android.view.*
-import android.widget.Toast
-import android.widget.Toolbar
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -13,10 +12,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 class HomeFragment : Fragment() {
     private lateinit var tabLayout : TabLayout
     private lateinit var viewPager : ViewPager2
-    private lateinit var toolbar: androidx.appcompat.widget.Toolbar
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +38,7 @@ class HomeFragment : Fragment() {
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when(position) {
-                0 -> tab.text = "Latest"
+                0 -> tab.text = "Popular"
                 1 -> tab.text = "Top-Rated"
                 2 -> tab.text = "Upcoming"
             }

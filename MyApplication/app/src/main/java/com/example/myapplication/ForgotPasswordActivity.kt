@@ -1,13 +1,13 @@
 package com.example.myapplication
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 
@@ -51,12 +51,10 @@ class ForgotPasswordActivity : AppCompatActivity() {
                     progressBarReset.visibility = View.INVISIBLE
 
                     if(task.isSuccessful) {
-                        Toast.makeText(this, "Check your mail", Toast.LENGTH_SHORT)
-                            .show()
+                        Log.d("Forgot Password", "Successful")
                     }
                     else {
-                        Toast.makeText(this, task.exception?.message!!, Toast.LENGTH_SHORT)
-                            .show()
+                        Log.e("Forgot Password", task.exception?.message.toString())
                     }
                 }
         }
