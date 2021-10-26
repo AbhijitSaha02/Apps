@@ -16,8 +16,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0093d97-16e9-42c7-82f8-56c49cb452d1" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/../HBD/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../HBD/app/src/main/res/drawable/button_layout.xml" beforeDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/../HBD/app/src/main/res/drawable/button_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HBD/app/src/main/res/drawable/button_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
