@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">ServiceBookingApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_women_option">WomenOptionActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="classic_men_salon_text">Regular Maintenance | Stylist with 3+ years of experience</string>
+    <string name="royale_men_salon_text">Styling \u0026 Consultation | Stylist with 8+ years of experience</string>
+    <string name="classic_women_spa_text">Expert Therapists | Essential Oils</string>
+    <string name="royale_women_spa_text">Top Therapists | Luxury Therapies | Hot Bed \u0026 Hot Oils</string>
+    <string name="classic_men_massage_text">Expert Therapists | Essential Oils</string>
+    <string name="royale_men_massage_text">Top Therapists | Curated Luxury Therapies</string>
+    <string name="video_consult_text">Get accurate diagnosis \u0026 estimate talk to senior expert in 30 seconds</string>
+    <string name="appliance_repair_text">For AC service, repair, installation, uninstallation</string>
+    <string name="person_visit_text">If required, auto-booked after video consult</string>
+</resources>

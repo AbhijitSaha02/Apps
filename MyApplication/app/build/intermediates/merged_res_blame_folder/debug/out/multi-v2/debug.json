@@ -7481,23 +7481,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-3\\d38f1693b4f43ee17d7f6f774914afa6\\transformed\\jetified-glide-4.9.0\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "57",
-                        "endOffsets": "108"
-                    },
-                    "to": {
-                        "startLines": "1119",
-                        "startColumns": "4",
-                        "startOffsets": "67588",
-                        "endColumns": "57",
-                        "endOffsets": "67641"
-                    }
-                },
-                {
                     "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-3\\57437d09451c17febfdf47d8a819dd97\\transformed\\fragment-1.3.6\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,10",
@@ -7681,6 +7664,23 @@
                         "endLines": "9836",
                         "endColumns": "24",
                         "endOffsets": "583762"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-3\\06bfd11f976ae37fcd9e6fcaa4632d67\\transformed\\jetified-glide-4.12.0\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "57",
+                        "endOffsets": "108"
+                    },
+                    "to": {
+                        "startLines": "1119",
+                        "startColumns": "4",
+                        "startOffsets": "67588",
+                        "endColumns": "57",
+                        "endOffsets": "67641"
                     }
                 },
                 {

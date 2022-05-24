@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "287042130272",
+    "project_id": "servicebooking-a7b24",
+    "storage_bucket": "servicebooking-a7b24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287042130272:android:1aafb36e36dee2d36a8e05",
+        "android_client_info": {
+          "package_name": "com.example.servicebookingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287042130272-vr3ejv0km6rh19e607p18qudg2tq93od.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.servicebookingapp",
+            "certificate_hash": "bbc2b58e7f71aec9694e097d54baad9ec50e8d9a"
+          }
+        },
+        {
+          "client_id": "287042130272-j0i7eojlfjt7i21d9nq40r172pa9heoq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx2qUNAveVKJswQsSmaR8oH9e1FV74MLQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287042130272-j0i7eojlfjt7i21d9nq40r172pa9heoq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

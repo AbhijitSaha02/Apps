@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.servicebookingapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ServiceBookingApp">
+        <activity
+            android:name=".OptionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PestControlActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ApplianceRepairOptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenWomenOptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeRepairActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PestCleaningActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ApplianceRepairActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenOptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WomenOptionActivity"
+            android:exported="false"
+            android:label="@string/title_activity_women_option"
+            android:theme="@style/Theme.ServiceBookingApp.NoActionBar" />
+        <activity
+            android:name=".PhoneLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>

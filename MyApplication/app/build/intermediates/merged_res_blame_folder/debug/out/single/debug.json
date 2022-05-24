@@ -136,12 +136,12 @@
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\font\\poppinsmedium.ttf"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_movie_detail.xml.flat",
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\layout\\activity_movie_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_action_name.png.flat",
@@ -152,12 +152,12 @@
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\ic_round_search_24.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_launcher_movieporium_background.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\ic_launcher_movieporium_background.xml"
-    },
-    {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_movieporium_adaptive_fore.png.flat",
         "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_movieporium_adaptive_fore.png"
+    },
+    {
+        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_launcher_movieporium_background.xml.flat",
+        "source": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\src\\main\\res\\drawable\\ic_launcher_movieporium_background.xml"
     },
     {
         "merged": "C:\\Users\\HP\\AndroidStudioProjects\\MyApplication\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_more_vert_24.xml.flat",
